@@ -1,0 +1,3 @@
+qiskit-ibm-runtime
+qiskit
+openqaoa-qiskit

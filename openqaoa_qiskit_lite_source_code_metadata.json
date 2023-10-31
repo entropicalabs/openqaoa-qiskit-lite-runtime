@@ -1,0 +1,63 @@
+{
+	"name": "OpenQAOA-Runtime",
+	"description": "An OpenQAOA supported runtime program",
+	"max_execution_time": 1800,
+	"spec": {
+		"backend_requirements": {
+			"min_num_qubits": 5
+		},
+		"parameters": {
+			"$schema": "https://json-schema.org/draft/2019-09/schema",
+			"properties": {
+				"qubo_dict": {
+					"type": "dictionary",
+					"description": "The QUBO problem to be optimized with QAOA"
+				},
+				"p": {
+					"type": "integer",
+					"description": "The QAOA depth of the circuit"
+				},
+				"n_shots": {
+					"type": "integer",
+					"description": "The number of shots to estimate expectation values"
+				},
+				"circuit_optimization_level": {
+					"type": "integer",
+					"min": "0",
+					"max": "3",
+					"description": "An integer that selects qiskit.transpile optimization level"
+				},
+				"optimizer_dict": {
+					"type": "dictionary",
+					"description": "Configuration of the classical optimizer in OpenQAOA"
+				}
+			},
+			"required": [
+				"qubo_dict",
+				"p",
+				"n_shots",
+				"circuit_optimization_level",
+				"optimizer_dict"
+			]
+		},
+		"return_values": {
+			"$schema": "https://json-schema.org/draft/2019-09/schema",
+			"description": "A dictionary that contains results of QAOA optimization",
+			"type": "dictionary"
+		},
+		"interim_results": {
+			"$schema": "https://json-schema.org/draft/2019-09/schema",
+			"properties": {
+				"iteration": {
+					"type": "integer",
+					"description": "Iteration number."
+				},
+				"counts": {
+					"description": "Histogram data of the circuit result.",
+					"type": "object"
+				}
+			}
+		}
+	},
+    "is_public": false
+}
